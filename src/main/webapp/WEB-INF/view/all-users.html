@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <title>All Users</title>
+</head>
+<body>
+
+<h2>Java February 1/2024</h2>
+<br>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Operations</th>
+    </tr>
+
+    <tr th:each="us : ${allUs}">
+        <td th:text="${us.name}"></td>
+        <td th:text="${us.surname}"></td>
+        <td th:text="${us.department}"></td>
+        <td th:text="${us.salary}"></td>
+        <td>
+            <input type="button" value="Update" th:onclick="'javascript:window.location.href = \'' + @{/updateInfo(usId=${us.id})} + '\''"/>
+            <input type="button" value="Delete" th:onclick="'javascript:window.location.href = \'' + @{/deleteUser(usId=${us.id})} + '\''"/>
+        </td>
+    </tr>
+
+</table>
+
+<br>
+
+<input type="button" value="Add" th:onclick="'javascript:window.location.href = \'' + @{/addNewUser} + '\''"/>
+
+</body>
+</html>
